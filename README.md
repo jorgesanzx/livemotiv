@@ -1,4 +1,7 @@
 livemotiv
 =========
 
-LiveMotiv.com
+LiveMotiv.com web project
+-------------------------
+
+Ironhack powered =)
