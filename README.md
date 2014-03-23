@@ -1,3 +1,3 @@
 LiveMotiv.com web project
 =========================
-Ironhack powered =)
+Ironhack powered =))
