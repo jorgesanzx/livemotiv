@@ -48,8 +48,7 @@ test:
   encoding: unicode
   database: livemotiv_test
   pool: 5
-  username: vagrant
-  password:
+  username: postgres
 
 production:
   adapter: postgresql
