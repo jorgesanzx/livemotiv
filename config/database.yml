@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: livemotiv_development
   pool: 5
-  username: livemotiv
+  username: vagrant
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: livemotiv_test
   pool: 5
-  username: livemotiv
+  username: vagrant
   password:
 
 production:
@@ -56,5 +56,3 @@ production:
   encoding: unicode
   database: livemotiv_production
   pool: 5
-  username: livemotiv
-  password:
