@@ -25,21 +25,34 @@ describe Authorization do
     end
   end
 
-  describe 'find_or_create' do
-    it 'returns the authorization if it already exists' do
-      auth_hash = {"provider" => "facebook", "uid" => "'1'"}
-      created_authorization = FactoryGirl.create(:authorization, provider: auth_hash["provider"], uid: auth_hash["uid"])
-      returned_authorization = Authorization.find_or_create(auth_hash)
-      expect(created_authorization).to eq(returned_authorization)
+  describe '.find_or_create' do
+
+    let(:auth_hash) do {"provider" => "facebook",
+                        "uid" => "'2'",
+                        "info" => {"nickname" => "NickName",
+                                   "email" => "email@example.com",
+                                   "name" => "First Second Name",
+                                   "image" => "http://graph.facebook.com/2/picture",
+                                   "location" => "Madrid, Spain"},
+                        "extra" => {"raw_info" => {"gender" => "male"}}}
     end
 
-    it 'creates a new user if it does not already exists and creates an authorization for that user' do
-      auth_hash = {"provider" => "facebook", "uid" => "'1'", "info" => {"name" => "john", "email" => "john@example.com"}}
-      expect(User.all).to be_empty
-      expect(Authorization.all).to be_empty
-      authorization = Authorization.find_or_create(auth_hash)
-      expect(User.all.count).to eq(1)
-      expect(Authorization.all).to include(authorization)
+    context 'when authorization already exists' do
+      it 'returns the authorization' do
+        created_authorization = FactoryGirl.create(:authorization, provider: auth_hash["provider"], uid: auth_hash["uid"])
+        returned_authorization = Authorization.find_or_create(auth_hash)
+        expect(created_authorization).to eq(returned_authorization)
+      end
+    end
+
+    context 'when authorization does not already exists' do
+      it 'creates a new user and creates an authorization for that user' do
+        expect(User.all).to be_empty
+        expect(Authorization.all).to be_empty
+        authorization = Authorization.find_or_create(auth_hash)
+        expect(User.all.count).to eq(1)
+        expect(Authorization.all).to include(authorization)
+      end
     end
   end
 end
