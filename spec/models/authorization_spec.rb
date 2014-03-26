@@ -2,31 +2,38 @@ require 'spec_helper'
 
 describe Authorization do
   describe 'provider' do
-    it 'is valid when present' do
-      authorization = Authorization.new provider: "facebook"
-      expect(authorization).to have(0).error_on(:provider)
+    context 'when present' do
+      it 'is valid' do
+        authorization = Authorization.new provider: "facebook"
+        expect(authorization).to have(0).error_on(:provider)
+      end
     end
 
-    it 'is not valid when not present' do
-      authorization = Authorization.new provider: ""
-      expect(authorization).to have(1).error_on(:provider)
+    context 'when not present' do
+      it 'is not valid' do
+        authorization = Authorization.new provider: ""
+        expect(authorization).to have(1).error_on(:provider)
+      end
     end
   end
 
   describe 'uid' do
-    it 'is valid when present' do
-      authorization = Authorization.new uid: "'1'"
-      expect(authorization).to have(0).error_on(:uid)
+    context 'when present' do
+      it 'is valid' do
+        authorization = Authorization.new uid: "'1'"
+        expect(authorization).to have(0).error_on(:uid)
+      end
     end
 
-    it 'is not valid when not present' do
-      authorization = Authorization.new uid: ""
-      expect(authorization).to have(1).error_on(:uid)
+    context 'when not present' do
+      it 'is not valid' do
+        authorization = Authorization.new uid: ""
+        expect(authorization).to have(1).error_on(:uid)
+      end
     end
   end
 
   describe '.find_or_create' do
-
     let(:auth_hash) do {"provider" => "facebook",
                         "uid" => "'2'",
                         "info" => {"nickname" => "NickName",
@@ -47,11 +54,9 @@ describe Authorization do
 
     context 'when authorization does not already exists' do
       it 'creates a new user and creates an authorization for that user' do
-        expect(User.all).to be_empty
         expect(Authorization.all).to be_empty
-        authorization = Authorization.find_or_create(auth_hash)
-        expect(User.all.count).to eq(1)
-        expect(Authorization.all).to include(authorization)
+        expect{Authorization.find_or_create(auth_hash)}.to change{User.all.count}.from(0).to(1)
+        expect(Authorization.all.count).to eq(1)
       end
     end
   end
