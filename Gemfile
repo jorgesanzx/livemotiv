@@ -47,8 +47,11 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'dotenv-rails'
 end
 
 gem 'rails_12factor', group: :production
+
+gem 'omniauth-facebook'
 
 ruby '1.9.3'
