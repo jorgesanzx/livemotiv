@@ -1,10 +1,15 @@
 Livemotiv::Application.routes.draw do
 
-  get 'auth/:provider/callback' => 'sessions#create'
-  get 'auth/failure' => 'sessions#failure'
-  get 'logout' => 'sessions#destroy'
+  root "welcome#index"
+  get "home" => "home#index"
+  get "me" => "me#index"
 
-  root 'welcome#index'
+  devise_for :users
+  # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  # get 'auth/:provider/callback' => 'sessions#create'
+  # get 'auth/failure' => 'sessions#failure'
+  # get 'logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
