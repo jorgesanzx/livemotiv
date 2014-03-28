@@ -52,6 +52,9 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'unicorn'
+gem 'spork-rails'
+gem 'devise'
 gem 'omniauth-facebook'
 
 ruby '1.9.3'
