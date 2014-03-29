@@ -36,7 +36,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -48,12 +48,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem 'spork-rails'
 end
 
 gem 'rails_12factor', group: :production
-
-gem 'unicorn'
-gem 'spork-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 

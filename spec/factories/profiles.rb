@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :profile do
     association :user
-    sequence(:nickname) {|n| "NickName#{n}"}
     sequence(:email) {|n| "email#{n}@example.com"}
+    sequence(:nickname) {|n| "NickName#{n}"}
     name "First Second Name"
     image "http://graph.facebook.com/2/picture"
     location "Madrid, Spain"
