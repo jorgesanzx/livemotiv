@@ -15,7 +15,7 @@
     <%= link_to "Me", "#" %>
     <%= link_to "My community", "#" %>
     <%= link_to "Settings", "#" %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <a href="sign_out">Sign out</a>
   <% else %>
     <a href="users/auth/facebook">Sign in with Facebook</a>
   <% end %>

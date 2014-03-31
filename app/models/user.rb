@@ -8,14 +8,12 @@ class User < ActiveRecord::Base
   has_one :profile
 
   def self.sign_in_or_sign_up(provider, uid, user_info)
-    Rails.logger.debug "*"*80
-    Rails.logger.debug provider
-    Rails.logger.debug uid
-    Rails.logger.debug user_info
-    Rails.logger.debug "*"*80
-
-    User.create!(provider: provider, uid: uid)
-
-    Profile.create(user_info)
+    user = User.find_by(provider: provider, uid: uid)
+    if user.nil?
+      user = User.create!(provider: provider, uid: uid)
+      profile = Profile.create!(user_info)
+      profile.user = user
+    end
+    user
   end
 end

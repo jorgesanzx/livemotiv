@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
+    provider "facebook"
+    sequence(:uid) {|n| "#{n}"}
   end
 end
