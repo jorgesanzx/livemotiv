@@ -11,8 +11,7 @@ class User < ActiveRecord::Base
     user = User.find_by(provider: provider, uid: uid)
     if user.nil?
       user = User.create!(provider: provider, uid: uid)
-      profile = Profile.create!(user_info)
-      profile.user = user
+      profile = Profile.create!(user_info.merge(user: user))
     end
     user
   end
