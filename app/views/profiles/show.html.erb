@@ -1,0 +1,59 @@
+<h1>Profiles#show</h1>
+<img src=<%= @profile.image %> />
+
+<p>
+  <strong>Email:</strong>
+  <%= @profile.email %>
+</p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @profile.nickname %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @profile.location %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @profile.job %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @profile.web %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @profile.summary %>
+</p>
+
+<p>
+  <strong>What I look for:</strong>
+  <%= @profile.what_i_look_for %>
+</p>
+
+<p>
+  <strong>Want to offer help?:</strong>
+  <%= @profile.offer_help? %>
+</p>
+
+<p>
+  <strong>Want to receive help?:</strong>
+  <%= @profile.receive_help? %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %>

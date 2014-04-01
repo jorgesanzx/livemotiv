@@ -5,8 +5,13 @@ Livemotiv::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do
-    get "sign_out", :to => "devise/sessions#destroy", :as => :destroy_user_session
+    get "sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
+
+  get ":profile_id/edit" => "profiles#edit", :as => :edit_profile
+  get ":profile_id" => "profiles#show", :as => :profile
+  patch ":profile_id" => "profiles#update"
+  put ":profile_id" => "profiles#update"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

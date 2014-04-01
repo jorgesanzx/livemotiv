@@ -1,0 +1,56 @@
+<h1>Profiles#edit</h1>
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :job %><br>
+    <%= f.text_field :job %>
+  </div>
+  <div class="field">
+    <%= f.label :web %><br>
+    <%= f.text_field :web %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :what_i_look_for %><br>
+    <%= f.text_area :what_i_look_for %>
+  </div>
+  <div class="field">
+    <%= f.label :offer_help? %><br>
+    <%= f.check_box :offer_help? %>
+  </div>
+  <div class="field">
+    <%= f.label :receive_help? %><br>
+    <%= f.check_box :receive_help? %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', @profile %>

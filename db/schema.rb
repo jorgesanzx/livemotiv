@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20140330154847) do
     t.string   "image"
     t.string   "location"
     t.string   "gender"
+    t.string   "job"
+    t.string   "web"
+    t.text     "summary"
+    t.text     "what_i_look_for"
+    t.boolean  "offer_help?"
+    t.boolean  "receive_help?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

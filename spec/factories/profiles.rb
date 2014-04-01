@@ -9,5 +9,11 @@ FactoryGirl.define do
     image "http://graph.facebook.com/2/picture"
     location "Madrid, Spain"
     gender "male"
+    job "student"
+    web "ninjastudent.com"
+    summary "I'm a ninja student"
+    what_i_look_for "I'm looking for a ninja to give me advice"
+    offer_help? "1"
+    receive_help? "1"
   end
 end
