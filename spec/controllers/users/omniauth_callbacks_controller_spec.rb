@@ -6,7 +6,7 @@ describe Users::OmniauthCallbacksController do
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
       provider: "facebook",
       uid:      "2",
-      info:     {nickname: "NickName",
+      info:     {nickname: "nickname",
                  email: "email@example.com",
                  name: "First Second Name",
                  image: "http://graph.facebook.com/2/picture",

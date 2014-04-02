@@ -3,11 +3,12 @@ class CreateProfiles < ActiveRecord::Migration
     create_table :profiles do |t|
       t.references :user, index: true
       t.string :email
-      t.string :nickname
+      t.string :nickname, index: true
       t.string :name
       t.string :image
       t.string :location
       t.string :gender
+      t.integer :age
       t.string :job
       t.string :web
       t.text :summary
