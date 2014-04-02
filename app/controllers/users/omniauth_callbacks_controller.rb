@@ -19,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def user_info
     {email: auth_hash["info"]["email"],
-     nickname: auth_hash["info"]["nickname"],
+     nickname: auth_hash["info"]["nickname"].parameterize,
      name: auth_hash["info"]["name"],
      image: auth_hash["info"]["image"],
      location: auth_hash["info"]["location"],

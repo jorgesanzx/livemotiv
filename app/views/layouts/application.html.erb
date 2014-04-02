@@ -11,10 +11,8 @@
   <h1>Logo</h1>
   <% if user_signed_in? %>
     <%= link_to "Home", "#" %>
-    <%= link_to "Notifications", "#" %>
-    <%= link_to "Me", "#" %>
+    <%= link_to "My Profile", current_user.profile %>
     <%= link_to "My community", "#" %>
-    <%= link_to "Settings", "#" %>
     <a href="sign_out">Sign out</a>
   <% else %>
     <a href="users/auth/facebook">Sign in with Facebook</a>
