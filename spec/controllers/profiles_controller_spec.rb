@@ -48,28 +48,28 @@ describe ProfilesController do
     describe "GET #show" do
       it "redirects to root" do
         get :show, profile_id: -1
-        expect(response).to redirect_to(root_path)
+        expect(response).to be_not_found
       end
     end
 
     describe "GET #edit" do
       it "redirects to root" do
         get :edit, profile_id: -1
-        expect(response).to redirect_to(root_path)
+        expect(response).to be_not_found
       end
     end
 
     describe "PATCH #update" do
       it "redirects to root" do
         patch :update, profile_id: -1, profile: {}
-        expect(response).to redirect_to(root_path)
+        expect(response).to be_not_found
       end
     end
 
     describe "PUT #update" do
       it "redirects to root" do
         put :update, profile_id: -1, profile: {}
-        expect(response).to redirect_to(root_path)
+        expect(response).to be_not_found
       end
     end
   end
