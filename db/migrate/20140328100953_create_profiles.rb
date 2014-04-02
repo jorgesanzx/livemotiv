@@ -8,6 +8,12 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :image
       t.string :location
       t.string :gender
+      t.string :job
+      t.string :web
+      t.text :summary
+      t.text :what_i_look_for
+      t.boolean :offer_help?
+      t.boolean :receive_help?
 
       t.timestamps
     end
