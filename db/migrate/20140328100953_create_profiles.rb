@@ -8,6 +8,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :image
       t.string :location
       t.string :gender
+      t.integer :age
       t.string :job
       t.string :web
       t.text :summary

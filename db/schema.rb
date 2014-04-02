@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330154847) do
+ActiveRecord::Schema.define(version: 20140402104051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connections", force: true do |t|
+    t.integer  "young_id"
+    t.integer  "experienced_id"
+    t.integer  "affinity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "connections", ["experienced_id"], name: "index_connections_on_experienced_id", using: :btree
+  add_index "connections", ["young_id"], name: "index_connections_on_young_id", using: :btree
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
@@ -24,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140330154847) do
     t.string   "image"
     t.string   "location"
     t.string   "gender"
+    t.integer  "age"
     t.string   "job"
     t.string   "web"
     t.text     "summary"

@@ -8,12 +8,13 @@ FactoryGirl.define do
     name "First Second Name"
     image "http://graph.facebook.com/2/picture"
     location "Madrid, Spain"
+    sequence(:age) {|n| 14 + 3*n}
     gender "male"
     job "student"
     web "ninjastudent.com"
     summary "I'm a ninja student"
     what_i_look_for "I'm looking for a ninja to give me advice"
-    offer_help? "1"
-    receive_help? "1"
+    offer_help? 1
+    receive_help? 1
   end
 end

@@ -8,10 +8,13 @@ Livemotiv::Application.routes.draw do
     get "sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
 
+  get "matching" => "profiles#matching", :as => :matching
+
   get ":profile_id/edit" => "profiles#edit", :as => :edit_profile
   get ":profile_id" => "profiles#show", :as => :profile
   patch ":profile_id" => "profiles#update"
   put ":profile_id" => "profiles#update"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
