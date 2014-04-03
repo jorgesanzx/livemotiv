@@ -27,6 +27,11 @@
 </p>
 
 <p>
+  <strong>Age:</strong>
+  <%= @profile.age %>
+</p>
+
+<p>
   <strong>Job:</strong>
   <%= @profile.job %>
 </p>
@@ -55,5 +60,9 @@
   <strong>Want to receive help?:</strong>
   <%= @profile.receive_help? %>
 </p>
+
+<form style="display: inline" action="matching">
+  <button>My profile is ready, find other users to talk with!</button>
+</form>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %>

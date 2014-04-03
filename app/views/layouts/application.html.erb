@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Livemotiv</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<header>
-  <h1>Logo</h1>
-  <% if user_signed_in? %>
-    <%= link_to "Home", "#" %>
-    <%= link_to "Notifications", "#" %>
-    <%= link_to "Me", "#" %>
-    <%= link_to "My community", "#" %>
-    <%= link_to "Settings", "#" %>
-    <a href="sign_out">Sign out</a>
-  <% else %>
-    <a href="users/auth/facebook">Sign in with Facebook</a>
-  <% end %>
-</header>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Livemotiv</title>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-<%= yield %>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-<footer>
-  <p>2014 LiveMotiv</p>
-</footer>
-</body>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">LiveMotiv</a>
+        </div>
+        <nav class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li><a href="#">Home</a></li>
+              <li><%= link_to "My Profile", current_user.profile %></li>
+              <li><a href="my-community">My Community</a></li>
+              <li><a href="sign_out">Sign out</a></li>
+            <% else %>
+              <li class="active"><a href="users/auth/facebook">Sign in with Facebook</a></li>
+            <% end %>
+          </ul>
+        </nav><!--/.nav-collapse -->
+      </div>
+    </header>
+
+    <section class="container" role="main">
+      <%= flash_message %>
+      <%= yield %>
+    </section>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
 </html>
