@@ -12,6 +12,9 @@ Livemotiv::Application.routes.draw do
   get "my-community" => "my_community#index"
 
   get ":profile_id/edit" => "profiles#edit", :as => :edit_profile
+  get ":profile_id/test" => "profiles#test", :as => :test
+  patch ":profile_id/test" => "profiles#process_test"
+  put ":profile_id/test" => "profiles#process_test"
   get ":profile_id" => "profiles#show", :as => :profile
   patch ":profile_id" => "profiles#update"
   put ":profile_id" => "profiles#update"

@@ -18,7 +18,7 @@ class Connection < ActiveRecord::Base
   end
 
   def self.profiles_connected(user)
-    connections = connections_of_user(user)
+    connections = connections_more_experienced_than_user(user)
     connections.reduce(Array.new) do |profiles_connected, connection|
       if connection.young == user.profile
         profiles_connected << connection.experienced
@@ -30,11 +30,15 @@ class Connection < ActiveRecord::Base
   end
 
   def self.affinities(user)
-    connections = connections_of_user(user)
+    connections = connections_more_experienced_than_user(user)
     connections.reduce(Array.new) do |affinities, connection|
       affinities << connection.affinity
     end
   end
+
+  scope :connections_more_experienced_than_user, ->(user) {
+    where(young_id: user.profile.id).order(affinity: :desc)
+  }
 
   scope :connections_of_user, ->(user) {
     where("experienced_id=? OR young_id=?", user.profile.id, user.profile.id).order(affinity: :desc)
@@ -43,14 +47,14 @@ class Connection < ActiveRecord::Base
   private
 
   def self.affinity_between_profiles(profile1, profile2)
-    affinity = 0.4 * age_affinity(profile1, profile2) + 0.6 * gender_affinity(profile1, profile2)
+    affinity = 0.2 * age_affinity(profile1, profile2) + 0.4 * gender_affinity(profile1, profile2) + 0.4 * test_affinity(profile1, profile2)
   end
 
   def self.age_affinity(profile1, profile2)
     age_difference = (profile1.age - profile2.age).abs
 
-    if age_difference <= 14 && age_difference >= 4
-      age_affinity = 800 / ((age_difference - 8).abs + 8)
+    if (age_difference <= 20 && age_difference >= 5)
+      age_affinity = 100 - (5 * (age_difference - 5))
     else
       age_affinity = 0
     end
@@ -62,5 +66,14 @@ class Connection < ActiveRecord::Base
     else
       gender_affinity = 0
     end
+  end
+
+  def self.test_affinity(profile1, profile2)
+    open_diff = (profile1.test.openness - profile2.test.openness).abs
+    cons_diff = (profile1.test.conscientiousness - profile2.test.conscientiousness).abs
+    extr_diff = (profile1.test.extraversion - profile2.test.extraversion).abs
+    agre_diff = (profile1.test.agreeableness - profile2.test.agreeableness).abs
+    neur_diff = (profile1.test.neuroticism - profile2.test.neuroticism).abs
+    test_affinity = 100 - (5 * (open_diff + cons_diff + extr_diff + agre_diff + neur_diff))
   end
 end

@@ -4,6 +4,8 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+  has_one :test
+
   has_many :young_connections, class_name: :Connection, foreign_key: :young_id
   has_many :experienced_connections, class_name: :Connection, foreign_key: :experienced_id
 

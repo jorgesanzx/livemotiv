@@ -1,61 +1,69 @@
 <div class="center">
-<h1>My Profile</h1>
-<%= image_tag(@profile.largeimage)%>
+  <% if current_user == @profile.user %>
+    <h1>My Profile</h1>
+  <% else %>
+    <h1><%= @profile.name %> profile</h1>
+  <% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @profile.email %>
-</p>
+  <%= image_tag(@profile.image)%>
 
-<p>
-  <strong>Name:</strong>
-  <%= @profile.name %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @profile.email %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @profile.location %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @profile.name %>
+  </p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @profile.gender %>
-</p>
+  <p>
+    <strong>Location:</strong>
+    <%= @profile.location %>
+  </p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @profile.age %>
-</p>
+  <p>
+    <strong>Gender:</strong>
+    <%= @profile.gender %>
+  </p>
 
-<p>
-  <strong>Job:</strong>
-  <%= @profile.job %>
-</p>
+  <p>
+    <strong>Age:</strong>
+    <%= @profile.age %>
+  </p>
 
-<p>
-  <strong>Web:</strong>
-  <%= @profile.web %>
-</p>
+  <p>
+    <strong>Job:</strong>
+    <%= @profile.job %>
+  </p>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @profile.summary %>
-</p>
+  <p>
+    <strong>Web:</strong>
+    <%= @profile.web %>
+  </p>
 
-<p>
-  <strong>What I look for:</strong>
-  <%= @profile.what_i_look_for %>
-</p>
+  <p>
+    <strong>Summary:</strong>
+    <%= @profile.summary %>
+  </p>
 
-<p>
-  <strong>Want to offer help?:</strong>
-  <%= @profile.offer_help? %>
-</p>
+  <p>
+    <strong>What I am looking for in LiveMotiv:</strong>
+    <%= @profile.what_i_look_for %>
+  </p>
 
-<p>
-  <strong>Want to receive help?:</strong>
-  <%= @profile.receive_help? %>
-</p>
+  <p>
+    <strong>Offering help?:</strong>
+    <%= @profile.offer_help? %>
+  </p>
 
-<%= link_to 'Edit', edit_profile_path(@profile), :class => "btn btn-primary" %>
+  <p>
+    <strong>Looking for help?:</strong>
+    <%= @profile.receive_help? %>
+  </p>
+
+  <% if current_user == @profile.user %>
+    <%= link_to 'Edit personal information', edit_profile_path(@profile), :class => "btn btn-primary" %>
+    <%= link_to 'Do personality test', test_path(@profile), :class => "btn btn-primary" %>
+  <% end %>
 </div>

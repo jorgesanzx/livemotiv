@@ -1,0 +1,42 @@
+<div class="center">
+<h1>Doing personality test</h1>
+<%= form_for(@test) do |f| %>
+  <% if @test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% @test.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :openness, "If 1 is a person who is very cautious, and 5 is a person who is very curious, what number are you from 1 to 5" %><br>
+    <%= f.number_field :openness %>
+  </div>
+  <div class="field">
+    <%= f.label :conscientiousness, "If 1 is a person who is very organized, and 5 is a person who is very easy-going, what number are you from 1 to 5" %><br>
+    <%= f.number_field :conscientiousness %>
+  </div>
+  <div class="field">
+    <%= f.label :extraversion, "If 1 is a person who is very outgoing, and 5 is a person who is very reserved, what number are you from 1 to 5" %><br>
+    <%= f.number_field :extraversion %>
+  </div>
+  <div class="field">
+    <%= f.label :agreeableness, "If 1 is a person who is very compassionate, and 5 is a person who is very detached, what number are you from 1 to 5" %><br>
+    <%= f.number_field :agreeableness %>
+  </div>
+  <div class="field">
+    <%= f.label :neuroticism, "If 1 is a person who is very sensitive, and 5 is a person who is very confident, what number are you from 1 to 5" %><br>
+    <%= f.number_field :neuroticism %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', current_user.profile, :class => "btn btn-warning" %>
+</div>

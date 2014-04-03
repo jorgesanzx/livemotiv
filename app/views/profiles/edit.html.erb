@@ -42,18 +42,18 @@
     <%= f.text_area :summary %>
   </div>
   <div class="field">
-    <%= f.label :what_i_look_for %><br>
+    <%= f.label :what_i_look_for, "What I am looking for in LiveMotiv:" %><br>
     <%= f.text_area :what_i_look_for %>
   </div>
   <div class="field">
-    <%= f.label :offer_help? %><br>
+    <%= f.label :offer_help?, "Are you in LiveMotiv to offer help?" %><br>
     <%= f.check_box :offer_help? %>
   </div>
   <div class="field">
-    <%= f.label :receive_help? %><br>
+    <%= f.label :receive_help?, "Are you in LiveMotiv to look for help?" %><br>
     <%= f.check_box :receive_help? %>
   </div>
-  <div class="actions btn btn-primary">
+  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
