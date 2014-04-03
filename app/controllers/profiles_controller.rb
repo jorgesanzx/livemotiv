@@ -9,7 +9,8 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to @profile, notice: "Profile was successfully updated."
+      flash[:success] = "Profile was successfully updated."
+      redirect_to @profile
     else
       render action: "edit"
     end
@@ -18,9 +19,11 @@ class ProfilesController < ApplicationController
   def matching
     if current_user.profile.valid_for_matching?
       Connection.matching(current_user.profile)
-      redirect_to current_user.profile, notice: "You have been matched."
+      flash[:success] = "LiveMotiv similar people to you, go to My Community and talk with them"
+      redirect_to current_user.profile
     else
-      redirect_to current_user.profile, notice: "You need to entry more information."
+      flash[:info] = "You need to entry more information so we can find similar people to you."
+      redirect_to current_user.profile
     end
   end
 
