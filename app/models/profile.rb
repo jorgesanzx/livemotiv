@@ -19,10 +19,6 @@ class Profile < ActiveRecord::Base
   }
 
   def valid_for_matching?
-    if age.present?
-      true
-    else
-      false
-    end
+    age.present?
   end
 end
