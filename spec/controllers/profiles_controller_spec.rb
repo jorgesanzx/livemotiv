@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ProfilesController do
+  before :each do
+    sign_in FactoryGirl.create(:user)
+  end
+
   context "when profile exists" do
     let(:profile) {FactoryGirl.create(:profile)}
     let(:profile_params) {FactoryGirl.attributes_for(:profile)}

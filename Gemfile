@@ -54,5 +54,6 @@ end
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'friendly_id'
 
 ruby '1.9.3'

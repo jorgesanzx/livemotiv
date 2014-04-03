@@ -6,7 +6,7 @@ describe User do
     let(:uid) {"2"}
     let(:user_info) do
       {email: "email@example.com",
-       nickname: "First Second Name",
+       username: "username",
        name: "First Second Name",
        image: "http://graph.facebook.com/2/picture",
        location: "Madrid, Spain",
