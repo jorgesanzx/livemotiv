@@ -1,14 +1,10 @@
-<h1>Profiles#show</h1>
-<img src=<%= @profile.image %> />
+<div class="center">
+<h1>My Profile</h1>
+<%= image_tag(@profile.image)%>
 
 <p>
   <strong>Email:</strong>
   <%= @profile.email %>
-</p>
-
-<p>
-  <strong>Nickname:</strong>
-  <%= @profile.nickname %>
 </p>
 
 <p>
@@ -61,8 +57,5 @@
   <%= @profile.receive_help? %>
 </p>
 
-<form style="display: inline" action="matching">
-  <button>My profile is ready, find other users to talk with!</button>
-</form>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %>
+<%= link_to 'Edit', edit_profile_path(@profile), :class => "btn btn-primary" %>
+</div>

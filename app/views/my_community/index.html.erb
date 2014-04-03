@@ -1,0 +1,19 @@
+<h1>My Community</h1>
+<% @profiles_connected.each_with_index do |profile, index| %>
+  <% if (index % 2 == 0) %>
+    <div class="row">
+  <% end %>
+  <div class="col-md-6 connection">
+    <%= image_tag(profile.image)%>
+    <dl>
+      <dt>Affinity:</dt> <dd><%= @affinities[index] %>%</dd>
+      <dt>Name:</dt> <dd><%= profile.name %></dd>
+      <dt>Age:</dt> <dd><%= profile.age %></dd>
+    </dl>
+    <a class="btn btn-primary btn-sm" href=<%= profile.username %>>Visit profile and<br>
+    start a conversation</a>
+  </div>
+  <% if (index % 2) == 1 %>
+    </div>
+  <% end %>
+<% end %>

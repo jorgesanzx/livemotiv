@@ -17,6 +17,29 @@ class Connection < ActiveRecord::Base
     end
   end
 
+  def self.profiles_connected(user)
+    connections = connections_of_user(user)
+    connections.reduce(Array.new) do |profiles_connected, connection|
+      if connection.young == user.profile
+        profiles_connected << connection.experienced
+      else
+        profiles_connected << connection.young
+      end
+      profiles_connected
+    end
+  end
+
+  def self.affinities(user)
+    connections = connections_of_user(user)
+    connections.reduce(Array.new) do |affinities, connection|
+      affinities << connection.affinity
+    end
+  end
+
+  scope :connections_of_user, ->(user) {
+    where("experienced_id=? OR young_id=?", user.profile.id, user.profile.id).order(affinity: :desc)
+  }
+
   private
 
   def self.affinity_between_profiles(profile1, profile2)

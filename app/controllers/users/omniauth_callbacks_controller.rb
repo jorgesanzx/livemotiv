@@ -1,8 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    Rails.logger.debug "X"*80
-    Rails.logger.debug auth_hash
-    Rails.logger.debug "X"*80
     user = User.sign_in_or_sign_up(auth_hash["provider"], auth_hash["uid"], user_info)
     sign_in_and_redirect user
     set_flash_message(:success, :success, kind: "Facebook") if is_navigational_format?
@@ -19,9 +16,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def user_info
     {email: auth_hash["info"]["email"],
-     nickname: auth_hash["info"]["nickname"].parameterize,
+     username: auth_hash["info"]["nickname"].parameterize,
      name: auth_hash["info"]["name"],
-     image: auth_hash["info"]["image"],
+     # image: auth_hash["info"]["image"],
+     image: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/t5.0-1/623909_100004583678770_1325152658_n.jpg",
      location: auth_hash["info"]["location"],
      gender: auth_hash["extra"]["raw_info"]["gender"]}
   end

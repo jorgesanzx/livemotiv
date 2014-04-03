@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140402154501) do
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.string   "email"
-    t.string   "nickname"
+    t.string   "username"
     t.string   "name"
     t.string   "image"
     t.string   "location"

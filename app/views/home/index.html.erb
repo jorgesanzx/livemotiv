@@ -1,1 +1,7 @@
-<h1>Home#index</h1>
+<div class="jumbotron">
+<% if current_user.profile.valid_for_matching? %>
+  <p>Go to <a href="my-community">My Community</a> to talk with somebody similar to you =)</p>
+<% else %>
+  <p>We need more information about you, so we can find similar people to you. Please, go to <a href=<%= current_user.profile.username %>>My Profile</a> and fill more information =)</p>
+<% end %>
+</div>

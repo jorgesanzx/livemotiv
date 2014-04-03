@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
@@ -13,17 +14,6 @@ class ProfilesController < ApplicationController
       redirect_to @profile
     else
       render action: "edit"
-    end
-  end
-
-  def matching
-    if current_user.profile.valid_for_matching?
-      Connection.matching(current_user.profile)
-      flash[:success] = "LiveMotiv similar people to you, go to My Community and talk with them"
-      redirect_to current_user.profile
-    else
-      flash[:info] = "You need to entry more information so we can find similar people to you."
-      redirect_to current_user.profile
     end
   end
 

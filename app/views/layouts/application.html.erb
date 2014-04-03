@@ -38,12 +38,12 @@
         <nav class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-              <li><a href="#">Home</a></li>
+              <li><a href="home">Home</a></li>
               <li><%= link_to "My Profile", current_user.profile %></li>
               <li><a href="my-community">My Community</a></li>
               <li><a href="sign_out">Sign out</a></li>
             <% else %>
-              <li class="active"><a href="users/auth/facebook">Sign in with Facebook</a></li>
+              <li><a href="users/auth/facebook">Sign in with Facebook</a></li>
             <% end %>
           </ul>
         </nav><!--/.nav-collapse -->

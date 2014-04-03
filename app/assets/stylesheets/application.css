@@ -21,4 +21,27 @@ body {
 
 .container .jumbotron {
   border-radius: 0;
+  text-align: center;
+}
+
+div.connection {
+  background-color: #eee;
+  padding: 15px;
+}
+
+.connection>dl {
+  display: inline-block;
+  padding: 0 20px;
+  vertical-align: middle;
+}
+
+.connection>a {
+  border: 5px solid white;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.center {
+  max-width: 500px;
+  margin: 0 auto;
 }
