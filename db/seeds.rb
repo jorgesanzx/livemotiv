@@ -18,8 +18,8 @@
                            gender: "male",
                            job: "Dentista",
                            web: "www.destistasunited.com",
-                           summary: "Hola, soy Paco. Llevo trabajando como dentista 5 annos. Los primeros 3 fueron en una clinica de otro dentista y luego monte una propia con mis ahorros. Tambien soy muy aficionado al teatro y al arte.",
-                           what_i_look_for: "Estoy aqui para intentar ayudar y compartir mi experiencia.",
+                           summary: "Hello, I am Paco. I have been working as a dentist for 5 years. I am also interested in theatre and arts.",
+                           what_i_look_for: "I am here to help and share my experience.",
                            offer_help?: true,
                            receive_help?: false)
   Test.create(profile_id: profile.id,

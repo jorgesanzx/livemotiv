@@ -1,5 +1,5 @@
 <div class="center">
-<h1>Doing personality test</h1>
+<h1>Are you more...?</h1>
 <%= form_for(@test) do |f| %>
   <% if @test.errors.any? %>
     <div id="error_explanation">
@@ -14,24 +14,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :openness, "If 1 is a person who is very cautious, and 5 is a person who is very curious, what number are you from 1 to 5" %><br>
-    <%= f.number_field :openness %>
+    <%= f.label :openness, "More Cautious ------------------------ or ------------------------ More More Curious" %><br>
+    <%= f.range_field :openness, min: 1, max: 5 %>
   </div>
   <div class="field">
-    <%= f.label :conscientiousness, "If 1 is a person who is very organized, and 5 is a person who is very easy-going, what number are you from 1 to 5" %><br>
-    <%= f.number_field :conscientiousness %>
+    <%= f.label :conscientiousness, "More Easy-going ------------------------ or ------------------------ More Organized" %><br>
+    <%= f.range_field :conscientiousness, min: 1, max: 5 %>
   </div>
   <div class="field">
-    <%= f.label :extraversion, "If 1 is a person who is very outgoing, and 5 is a person who is very reserved, what number are you from 1 to 5" %><br>
-    <%= f.number_field :extraversion %>
+    <%= f.label :extraversion, "More Reserved -------------------------- or -------------------------- More Outgoing" %><br>
+    <%= f.range_field :extraversion, min: 1, max: 5 %>
   </div>
   <div class="field">
-    <%= f.label :agreeableness, "If 1 is a person who is very compassionate, and 5 is a person who is very detached, what number are you from 1 to 5" %><br>
-    <%= f.number_field :agreeableness %>
+    <%= f.label :agreeableness, "More Detached ---------------------- or ---------------------- More Compassionate" %><br>
+    <%= f.range_field :agreeableness, min: 1, max: 5 %>
   </div>
   <div class="field">
-    <%= f.label :neuroticism, "If 1 is a person who is very sensitive, and 5 is a person who is very confident, what number are you from 1 to 5" %><br>
-    <%= f.number_field :neuroticism %>
+    <%= f.label :neuroticism, "More Confident -------------------------- or -------------------------- More Sensitive" %><br>
+    <%= f.range_field :neuroticism, min: 1, max: 5 %>
   </div>
   <div class="actions">
     <%= f.submit %>
